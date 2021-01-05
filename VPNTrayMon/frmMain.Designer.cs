@@ -64,7 +64,6 @@ namespace VPNTrayMon
             this.pausarMonitoramentoDaVPNToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.encerrarAAplicaçãoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SobretoolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.eventLog1 = new System.Diagnostics.EventLog();
             this.err1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.btnMinimizar = new System.Windows.Forms.Button();
             this.tmrMonitor = new System.Windows.Forms.Timer(this.components);
@@ -75,7 +74,6 @@ namespace VPNTrayMon
             this.tbPg2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.MenuStrip.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.eventLog1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.err1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -421,10 +419,6 @@ namespace VPNTrayMon
             this.SobretoolStripMenuItem1.Text = "Sobre";
             this.SobretoolStripMenuItem1.Click += new System.EventHandler(this.SobretoolStripMenuItem1_Click);
             // 
-            // eventLog1
-            // 
-            this.eventLog1.SynchronizingObject = this;
-            // 
             // err1
             // 
             this.err1.ContainerControl = this;
@@ -468,7 +462,6 @@ namespace VPNTrayMon
             this.tbPg2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.MenuStrip.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.eventLog1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.err1)).EndInit();
             this.ResumeLayout(false);
 
@@ -490,7 +483,6 @@ namespace VPNTrayMon
         private System.Windows.Forms.ToolStripMenuItem abrirInterfaceToolStripMenuItem;
         private System.Windows.Forms.NotifyIcon notifyIcon1;
         private System.Windows.Forms.ContextMenuStrip MenuStrip;
-        private System.Diagnostics.EventLog eventLog1;
         private System.Windows.Forms.Button btnSalvar;
         private System.Windows.Forms.TextBox txtQtdPingsADisparar;
         private System.Windows.Forms.Label label6;

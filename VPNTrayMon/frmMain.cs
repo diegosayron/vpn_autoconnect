@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace VPNTrayMon
@@ -9,25 +7,13 @@ namespace VPNTrayMon
     {
 
         VPNConnect vpnMonitorada;
-        private int eventId = 1;
         private bool allowVisible;
-        private bool allowClose;
 
         public frmMain()
         {
             InitializeComponent();
 
             this.notifyIcon1.Icon = Properties.Resources.icone;
-
-            eventLog1 = new EventLog();
-            if (!EventLog.SourceExists("VPNTrayMon"))
-            {
-                EventLog.CreateEventSource(
-                    "VPNTrayMon", "VPNTrayLog");
-            }
-            eventLog1.Source = "VPNTrayMon";
-            eventLog1.Log = "VPNTrayLog";
-
             StartInicialDoServico();
 
             Monitorar();
@@ -35,8 +21,6 @@ namespace VPNTrayMon
 
         private void StartInicialDoServico()
         {
-            eventLog1.WriteEntry("O VPNTrayMon iniciou o serviço");
-
             if (Configuracoes.RequerConfigurar())
             {
 
@@ -54,15 +38,8 @@ namespace VPNTrayMon
 
         private async void Monitorar()
         {
-            eventLog1.WriteEntry("Monitorando a VPN", EventLogEntryType.Information, eventId++);
+            await vpnMonitorada.VPNDesconectouAsync();
 
-            //while (!await vpnMonitorada.VPNDesconectouAsync())
-            //{
-                //MONITORAMENTO
-                await vpnMonitorada.VPNDesconectouAsync();
-            //}
-
-            //AÇÃO
             if (vpnMonitorada.Reconectar &&
                 (vpnMonitorada.StatusDaVPN == VPNConnect.StatusVPN.VPNDesconectada ||
                 vpnMonitorada.StatusDaVPN == VPNConnect.StatusVPN.VPNStatusNaoReconhecido))
@@ -144,7 +121,6 @@ namespace VPNTrayMon
         private void btnMinimizar_Click(object sender, EventArgs e)
         {
             HideInterface();
-            //this.Close();
         }
         private void AtulizarItensVisuaisDoStatusDaConexao()
         {
@@ -244,13 +220,6 @@ namespace VPNTrayMon
         }
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
-            /*
-            if (!allowClose)
-            {
-                this.Hide();
-                e.Cancel = true;
-            }
-            */
             base.OnFormClosing(e);
             notifyIcon1.Visible = false;
             this.Dispose();

@@ -155,16 +155,6 @@ namespace VPNTrayMon
             }
 
             return listaVPNs;
-            /*
-            foreach (Match m in matches)
-            {
-                listView1.Items.Add(m.Groups[1].ToString());
-            }
-            listView1.View = View.Details;
-            //listView1.Columns[0].Width = listView1.Width;
-            listView1.Columns[0].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
-            listView1.Columns[0].TextAlign = HorizontalAlignment.Center;
-            */
         }
 
     }

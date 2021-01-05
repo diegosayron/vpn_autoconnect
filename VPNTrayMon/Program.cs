@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 
 namespace VPNTrayMon
 {
@@ -7,12 +8,9 @@ namespace VPNTrayMon
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
+        [STAThread]
         static void Main()
         {
-            //frmMain f = new frmMain();
-            //f.Show();
-
-            //MessageBox.Show(System.Configuration.ConfigurationManager.OpenExeConfiguration(System.Configuration.ConfigurationUserLevel.PerUserRoamingAndLocal).FilePath);
             Configuracoes.LerConfiguracoes();
             Application.Run(new frmMain());
         }
